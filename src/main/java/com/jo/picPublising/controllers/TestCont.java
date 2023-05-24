@@ -11,8 +11,8 @@ public class TestCont {
 
     @GetMapping("/user")
     public String UserService() throws Exception {
-        throw new Exception("User Exception");
-//        return "Hello User";
+//        throw new Exception("User Exception");
+        return "Hello User";
     }
 
     @GetMapping("/admin")
