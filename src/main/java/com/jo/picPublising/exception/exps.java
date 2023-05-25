@@ -19,17 +19,22 @@ public class exps {
     public ResponseDto handleValidationErrors(MethodArgumentNotValidException ex) {
         List<String> errors = ex.getBindingResult().getFieldErrors()
                 .stream().map(FieldError::getDefaultMessage).collect(Collectors.toList());
-        return ResponseDto.builder().message(ListToString(errors).toString()).data(null).status(false).code(200).build();
-    }
-    private StringBuilder ListToString(List errors){
+
+        return new ResponseDto(200,ListToString(errors).toString(), "Validation",false);    }
+    private StringBuilder ListToString(List<String> errors){
+        System.out.println(errors);
         StringBuilder strErrors = new StringBuilder(" ");
-        errors.stream().map(x -> strErrors.append((x + ", \n")));
+        for(String x : errors){
+            System.out.println(x);
+            strErrors.append((x + ", "));
+        }
+
         return strErrors;
     }
     @ExceptionHandler(Exception.class)
     public final ResponseDto handleGeneralExceptions(Exception ex) {
         List<String> errors = Collections.singletonList(ex.getMessage());
-        return ResponseDto.builder().code(200).status(false).data(null).message(errors.get(0)).build();
+        return new ResponseDto(200,errors.get(0),"Exception",false);
     }
 
 }

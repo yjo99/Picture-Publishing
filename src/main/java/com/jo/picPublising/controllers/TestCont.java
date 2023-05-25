@@ -1,18 +1,21 @@
 package com.jo.picPublising.controllers;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.jo.picPublising.business.dto.request.UserDto;
+import com.jo.picPublising.business.mapping.UserMap;
+import com.jo.picPublising.persistance.models.User;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/test")
 public class TestCont {
 
-    @GetMapping("/user")
-    public String UserService() throws Exception {
-//        throw new Exception("User Exception");
-        return "Hello User";
+
+    @PostMapping("/user")
+    public String UserService(@RequestBody @Valid UserDto userDto) {
+        return "userDto.getUserName()";
     }
 
     @GetMapping("/admin")
