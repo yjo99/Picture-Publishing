@@ -3,12 +3,11 @@ package com.jo.picPublising.persistance.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
-
-@RequiredArgsConstructor
-@AllArgsConstructor
 @Builder
 public class User {
     @Id
@@ -16,13 +15,21 @@ public class User {
     private Long id;
 
     private String userName;
+
     @NonNull
     private String email;
     private String address;
     private String password;
 
-    public User(){
+    @ManyToMany
+    private Set<Roles> roles = new HashSet<>();
 
+    public User(){}
+    public User(String userName, String email, String address, String password){
+        this.userName = userName;
+        this.email = email;
+        this.address = address;
+        this.password = password;
     }
 
 }
