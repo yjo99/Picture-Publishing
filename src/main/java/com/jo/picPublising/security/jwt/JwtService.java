@@ -1,6 +1,5 @@
 package com.jo.picPublising.security.jwt;
 
-import com.jo.picPublising.persistance.models.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -15,7 +14,7 @@ import java.util.function.Function;
 
 @Service
 @Log4j
-public class jwtService {
+public class JwtService {
 
     private static final String sKey = "397A24432646294A404E635166546A576E5A7234753778214125442A472D4B61";
 
@@ -47,7 +46,7 @@ public class jwtService {
                 .setSubject(userDetails.getUsername())
                 .claim("role", userDetails.getAuthorities())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + (1000 * 60 * 60 * 48) ))
+                .setExpiration(new Date(System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 60) ))
                 .signWith(SignatureAlgorithm.HS256, getsKey())
                 .compact();
     }

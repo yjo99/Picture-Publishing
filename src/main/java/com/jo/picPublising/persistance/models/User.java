@@ -1,8 +1,9 @@
 package com.jo.picPublising.persistance.models;
 
+import jakarta.persistence.Entity;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
