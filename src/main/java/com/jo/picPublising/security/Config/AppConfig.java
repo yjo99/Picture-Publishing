@@ -59,8 +59,9 @@ public class AppConfig {
 
     /////////security Configuration;
     private static final String[] whiteList = {
-            "/auth/**",
-            "/homepage/**"
+            "auth/**",
+            "homepage/**",
+            "swagger-ui.html/**"
     };
 
     @Bean

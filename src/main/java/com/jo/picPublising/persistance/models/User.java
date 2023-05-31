@@ -9,7 +9,6 @@ import java.util.Set;
 
 @Entity
 @Data
-@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,11 +25,13 @@ public class User {
     private Set<Roles> roles = new HashSet<>();
 
     public User(){}
-    public User(String userName, String email, String address, String password){
+
+    public User(String userName, String email, String address, String password, Set<Roles> roles){
         this.userName = userName;
         this.email = email;
         this.address = address;
         this.password = password;
+        this.roles = roles;
     }
 
 }

@@ -4,7 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import lombok.extern.log4j.Log4j;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,7 +13,6 @@ import java.util.*;
 import java.util.function.Function;
 
 @Service
-@Log4j
 public class JwtService {
 
     private static final String sKey = "397A24432646294A404E635166546A576E5A7234753778214125442A472D4B61";

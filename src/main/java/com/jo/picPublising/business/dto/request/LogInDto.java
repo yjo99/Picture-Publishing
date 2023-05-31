@@ -1,31 +1,23 @@
 package com.jo.picPublising.business.dto.request;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.stereotype.Component;
-
-import jakarta.validation.constraints.*;
-
 
 @Data
 @Builder
-public class UserDto {
-
-    @NotBlank(message = "Invalid User Name: name is empty.")
-    @NotNull(message = "Invalid User Name: name is null.")
-    @Size(min = 3, max = 30, message = "Invalid User Name : Must be of 3-30 character.")
-    private String userName;
+public class LogInDto {
 
     @NotBlank(message = "Invalid Email: Email is empty.")
     @NotNull(message = "Invalid Email: Email is null.")
     @Email(message = "Invalid email.")
     private String email;
 
-    private String address;
-
     @NotBlank(message = "Invalid Password: Password is empty.")
     @NotNull(message = "Invalid Password: Password is null.")
     @Size(min = 3, max = 30, message = "Invalid Password : Must be of 3-30 character.")
     private String password;
-
 }
