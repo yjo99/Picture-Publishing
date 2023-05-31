@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import jakarta.validation.constraints.*;
 
+import java.util.Set;
+
 
 @Data
 @Builder
@@ -28,4 +30,5 @@ public class UserDto {
     @Size(min = 3, max = 30, message = "Invalid Password : Must be of 3-30 character.")
     private String password;
 
+    private Set<String> roles;
 }

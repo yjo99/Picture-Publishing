@@ -4,23 +4,22 @@ import com.jo.picPublising.business.dto.request.LogInDto;
 import com.jo.picPublising.business.dto.request.UserDto;
 import com.jo.picPublising.business.dto.response.ResponseDto;
 import com.jo.picPublising.business.mapping.UserMap;
-import com.jo.picPublising.business.service.Authentication;
-import com.jo.picPublising.exception.ObjectNotFoundException;
+import com.jo.picPublising.business.service.Auth;
 import com.jo.picPublising.persistance.models.User;
 import com.jo.picPublising.persistance.repo.UserRepo;
 import com.jo.picPublising.security.jwt.JwtService;
-import com.jo.picPublising.security.services.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthenticationImp implements Authentication {
+public class AuthenticationImp implements Auth {
 
     public final UserMap userMap;
     public final UserRepo userRepo;
@@ -51,12 +50,15 @@ public class AuthenticationImp implements Authentication {
         String message = "";
         Object data = null;
 
-        authenticationManager.authenticate(
+        Authentication authentication =  authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         logInDto.getEmail(),
                         logInDto.getPassword()
                 )
         );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
 
         data = jwtService.generateToken(userDetailsService.loadUserByUsername(logInDto.getEmail()));
         message = "User Login Successfully";

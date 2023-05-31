@@ -31,11 +31,11 @@ public class GlobalException {
         }
         return strErrors;
     }
-//    @ExceptionHandler(Exception.class)
-//    public final ResponseDto handleGeneralExceptions(Exception ex) {
-//        List<String> errors = Collections.singletonList(ex.getMessage());
-//        return new ResponseDto(200,errors.get(0),"Exception",false);
-//    }
+    @ExceptionHandler(Exception.class)
+    public final ResponseDto handleGeneralExceptions(Exception ex) {
+        List<String> errors = Collections.singletonList(ex.getMessage());
+        return new ResponseDto(200,errors.get(0),"Exception",false);
+    }
 
     @ExceptionHandler(ObjectNotFoundException.class)
     public ResponseDto objectNoftFoundException(RuntimeException ex){

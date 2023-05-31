@@ -61,7 +61,8 @@ public class AppConfig {
     private static final String[] whiteList = {
             "auth/**",
             "homepage/**",
-            "swagger-ui.html/**"
+            "/v3/api-docs/**",
+            "/swagger-ui/**"
     };
 
     @Bean

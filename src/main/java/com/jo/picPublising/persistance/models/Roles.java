@@ -4,9 +4,11 @@ import lombok.Data;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Data
-public class Roles {
+public class Roles implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
