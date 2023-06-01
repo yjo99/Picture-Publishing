@@ -3,6 +3,7 @@ package com.jo.picPublising.business.serivceImp;
 import com.jo.picPublising.business.dto.request.LogInDto;
 import com.jo.picPublising.business.dto.request.UserDto;
 import com.jo.picPublising.business.dto.response.ResponseDto;
+import com.jo.picPublising.business.mapping.CustomUserMapper;
 import com.jo.picPublising.business.mapping.UserMap;
 import com.jo.picPublising.business.service.Auth;
 import com.jo.picPublising.persistance.models.User;
@@ -22,6 +23,7 @@ import org.springframework.stereotype.Service;
 public class AuthenticationImp implements Auth {
 
     public final UserMap userMap;
+    public final CustomUserMapper customUserMapper;
     public final UserRepo userRepo;
     public final PasswordEncoder passwordEncoder;
     public final JwtService jwtService;
@@ -36,7 +38,7 @@ public class AuthenticationImp implements Auth {
         if(userRepo.existsUserByEmail(userDto.getEmail())){
             message = "User is Already Exist";
         }else{
-            User user = userMap.DtoToEntity(userDto);
+            User user = customUserMapper.DtoToUser(userDto);
             user.setPassword(passwordEncoder.encode(userDto.getPassword()));
             userRepo.save(user);
             message = "User Saved Successfully";

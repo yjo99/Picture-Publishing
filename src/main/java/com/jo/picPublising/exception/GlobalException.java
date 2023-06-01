@@ -34,6 +34,7 @@ public class GlobalException {
     @ExceptionHandler(Exception.class)
     public final ResponseDto handleGeneralExceptions(Exception ex) {
         List<String> errors = Collections.singletonList(ex.getMessage());
+        ex.printStackTrace();
         return new ResponseDto(200,errors.get(0),"Exception",false);
     }
 

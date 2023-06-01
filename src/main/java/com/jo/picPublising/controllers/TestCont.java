@@ -18,9 +18,9 @@ public class TestCont {
 
 
     @PostMapping("/user")
-    public String UserService(@RequestBody @Valid UserDto userDto) {
+    public User UserService(@RequestBody @Valid UserDto userDto) {
 
-        return "userDto.getUserName()";
+        return new User();
     }
 
     @GetMapping("/admin")

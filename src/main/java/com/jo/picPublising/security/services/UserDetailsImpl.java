@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
@@ -32,7 +33,7 @@ public class UserDetailsImpl implements UserDetails {
     }
     public static UserDetailsImpl build(User user){
 
-        List<GrantedAuthority>  authorities = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getRole().name())).collect(Collectors.toList());
+        Set<GrantedAuthority> authorities = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getRole().name())).collect(Collectors.toSet());
 
         return new UserDetailsImpl(user.getId(), user.getUserName(),user.getEmail(),user.getPassword(), authorities);
     }
