@@ -1,9 +1,10 @@
 package com.jo.picPublising.business.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public interface UploadFilesService {
 
-     void init();
-     void saveFile();
+     String saveFile(MultipartFile file);
 
 
 }

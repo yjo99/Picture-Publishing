@@ -15,6 +15,5 @@ public class FileData {
 
     private String url;
 
-    @OneToOne
-    private FileType type;
+    private String type;
 }

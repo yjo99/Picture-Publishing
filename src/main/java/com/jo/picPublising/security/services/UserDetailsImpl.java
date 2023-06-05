@@ -1,7 +1,6 @@
 package com.jo.picPublising.security.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.jo.picPublising.business.CustLogger;
 import com.jo.picPublising.persistance.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,17 +34,13 @@ public class UserDetailsImpl implements UserDetails {
     public static UserDetailsImpl build(User user){
 
         Set<GrantedAuthority> authorities = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getRole().name())).collect(Collectors.toSet());
-
-        CustLogger.loog.error("" + authorities);
         UserDetailsImpl userDetails = new UserDetailsImpl(user.getId(), user.getUserName(),user.getEmail(),user.getPassword(), authorities);
-        CustLogger.loog.error(" "+ userDetails.getAuthorities());
+
         return userDetails;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
-        CustLogger.loog.error("" + authorities);
 
         return authorities;
     }
