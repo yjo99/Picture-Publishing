@@ -41,7 +41,8 @@ public class UploadFilesServiceImp implements UploadFilesService {
 
         try{
             logger.info("inside try of save File");
-            Path concatPath = this.root.resolve(file.getOriginalFilename());
+            createtypePath(file.getContentType());
+            Path concatPath = this.root.resolve(createTypeDict(file));
             logger.info("inside try of save File and path is:  " + concatPath);
             Files.copy(file.getInputStream(), concatPath);
 
@@ -57,6 +58,18 @@ public class UploadFilesServiceImp implements UploadFilesService {
 
     }
 
+    private void createtypePath(String typeFile){
+
+        Path newPath = this.root.resolve(typeFile);
+        try{
+            logger.info("inside create type path  try() for create path: " + newPath);
+            Path typePath = Files.createDirectories(newPath);
+            logger.info("After creating path");
+        } catch (IOException e) {
+            logger.error("cant create type path");
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
     private String createTypeDict(MultipartFile file){
         String path = file.getContentType() + file.getOriginalFilename();
