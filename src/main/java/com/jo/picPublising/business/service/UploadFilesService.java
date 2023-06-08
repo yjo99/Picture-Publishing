@@ -6,5 +6,8 @@ public interface UploadFilesService {
 
      String saveFile(MultipartFile file);
 
+     ResponseDto loadFile(Long id);
+     ResponseDto loadAll();
+
 
 }
