@@ -29,4 +29,15 @@ public class fileUploadCont {
         }
     }
 
+    @GetMapping("/findfile/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    public ResponseDto findlFileById(@PathVariable Long id){
+        return uploadFilesService.loadFile(id);
+    }
+
+    @GetMapping("/findallfile")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    public ResponseDto findlAllFile(){
+        return uploadFilesService.loadAll();
+    }
 }

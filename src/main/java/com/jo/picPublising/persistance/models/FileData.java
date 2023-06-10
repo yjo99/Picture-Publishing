@@ -16,4 +16,5 @@ public class FileData {
     private String url;
 
     private String type;
+    private Long size;
 }
