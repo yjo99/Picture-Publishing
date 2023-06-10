@@ -1,5 +1,6 @@
 package com.jo.picPublising.business.serivceImp;
 
+import com.jo.picPublising.business.dto.response.ResponseDto;
 import com.jo.picPublising.business.service.UploadFilesService;
 import com.jo.picPublising.security.jwt.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
@@ -56,6 +57,16 @@ public class UploadFilesServiceImp implements UploadFilesService {
         }
         return "File saved Successfully";
 
+    }
+
+    @Override
+    public ResponseDto loadFile(Long id) {
+        return null;
+    }
+
+    @Override
+    public ResponseDto loadAll() {
+        return null;
     }
 
     private void createtypePath(String typeFile){
