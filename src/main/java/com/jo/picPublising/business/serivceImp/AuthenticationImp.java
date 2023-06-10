@@ -4,7 +4,6 @@ import com.jo.picPublising.business.dto.request.LogInDto;
 import com.jo.picPublising.business.dto.request.UserDto;
 import com.jo.picPublising.business.dto.response.ResponseDto;
 import com.jo.picPublising.business.mapping.CustomUserMapper;
-import com.jo.picPublising.business.mapping.UserMap;
 import com.jo.picPublising.business.service.Auth;
 import com.jo.picPublising.persistance.models.User;
 import com.jo.picPublising.persistance.repo.UserRepo;
@@ -22,7 +21,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticationImp implements Auth {
 
-    public final UserMap userMap;
+
     public final CustomUserMapper customUserMapper;
     public final UserRepo userRepo;
     public final PasswordEncoder passwordEncoder;

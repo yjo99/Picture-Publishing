@@ -1,6 +1,7 @@
 package com.jo.picPublising.controllers;
 
 
+import com.jo.picPublising.business.dto.response.ResponseDto;
 import com.jo.picPublising.business.service.UploadFilesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
@@ -17,17 +18,15 @@ public class fileUploadCont {
 
     @PostMapping("/uploadfile")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public String UploadFile( @RequestParam("file") MultipartFile file) {
+    public ResponseDto UploadFile(@RequestParam("file") MultipartFile file) throws Exception {
 
         try{
             return uploadFilesService.saveFile(file);
         }catch(Exception e){
 //            return "cant upload file:" + file.getOriginalFilename() + " Error: " + e.getMessage();
             e.printStackTrace();
+            throw new Exception(e.getMessage());
         }
-        return "test";
-
-
     }
 
 }

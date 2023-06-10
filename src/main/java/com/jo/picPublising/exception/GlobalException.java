@@ -38,6 +38,13 @@ public class GlobalException {
         return new ResponseDto(200,errors.get(0),"Exception",false);
     }
 
+    @ExceptionHandler(RuntimeException.class)
+    public final ResponseDto handleGeneralRuntimeException(RuntimeException ex) {
+        List<String> errors = Collections.singletonList(ex.getMessage());
+        ex.printStackTrace();
+        return new ResponseDto(200,errors.get(0),"RuntimeException",false);
+    }
+
     @ExceptionHandler(ObjectNotFoundException.class)
     public ResponseDto objectNoftFoundException(RuntimeException ex){
         List<String> errors = Collections.singletonList(ex.getMessage());

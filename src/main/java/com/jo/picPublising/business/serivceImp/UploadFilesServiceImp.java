@@ -21,7 +21,7 @@ public class UploadFilesServiceImp implements UploadFilesService {
     private static final Logger logger = LoggerFactory.getLogger(UploadFilesServiceImp.class);
 
     //Path is work with files and direction
-    Path root = Paths.get("test111111");
+    Path root = Paths.get("media");
 
     {
         logger.info("first loggggger");
@@ -38,7 +38,7 @@ public class UploadFilesServiceImp implements UploadFilesService {
     }
 
     @Override
-    public String saveFile(MultipartFile file) {
+    public ResponseDto saveFile(MultipartFile file) {
 
         try{
             logger.info("inside try of save File");
@@ -55,7 +55,7 @@ public class UploadFilesServiceImp implements UploadFilesService {
             logger.info("inside catch(exception) of save File , Error: " + e.getMessage());
             e.printStackTrace();
         }
-        return "File saved Successfully";
+        return new ResponseDto(200,"File Saved Successfully",file,true);
 
     }
 
