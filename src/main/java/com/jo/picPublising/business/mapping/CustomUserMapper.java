@@ -30,17 +30,17 @@ public class CustomUserMapper {
         user.setPassword(userDto.getPassword());
         user.setAddress(userDto.getAddress());
 
-        Set<Roles> roles = new HashSet();
-
-
-
-        for(String x : userDto.getRoles()){
-            ERoles eroles = ERoles.valueOf(x);
-            Roles role = rolesRepo.findRolesByRole(eroles).orElseThrow(() -> new ObjectNotFoundException("Role Not found"));
-            roles.add(role);
-        }
-
-        user.setRoles(roles);
+//        Set<Roles> roles = new HashSet();
+//
+//
+//
+//        for(String x : userDto.getRoles()){
+//            ERoles eroles = ERoles.valueOf(x);
+//            Roles role = rolesRepo.findRolesByRole(eroles).orElseThrow(() -> new ObjectNotFoundException("Role Not found"));
+//            roles.add(role);
+//        }
+//
+//        user.setRoles(roles);
 
         return user;
 
