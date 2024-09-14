@@ -12,7 +12,6 @@ import lombok.Data;
 public class LogInDto {
 
     @NotBlank(message = "Invalid Email: Email is empty.")
-    @NotNull(message = "Invalid Email: Email is null.")
     @Email(message = "Invalid email.")
     private String email;
 
